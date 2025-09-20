@@ -12,7 +12,9 @@ remappings = [
 # RPC URLs for Polygon
 [rpc_endpoints]
 polygon_amoy = "https://polygon-amoy.g.alchemy.com/v2/wDbF6Bg_Z8DIHgyiz6x0zcIA09U-jZAB"
+polygon = "https://polygon-mainnet.g.alchemy.com/v2/YOUR_ALCHEMY_API_KEY"
 
 # PolygonScan API keys for verification
 [etherscan]
 polygon_amoy = { key = "YOUR_POLYGONSCAN_API_KEY", url = "https://api-testnet.polygonscan.com/api" }
+polygon = { key = "YOUR_POLYGONSCAN_API_KEY", url = "https://api.polygonscan.com/api" }
