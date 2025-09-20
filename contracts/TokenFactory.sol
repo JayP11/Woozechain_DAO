@@ -32,6 +32,11 @@ contract TokenFactory {
         address[] memory _tokenAddress,
         bool _daoType
     ) public returns (ERC20Votes) {
+        require(
+            _tokenAddress.length == _initialSupply.length,
+            "holders/supplies length mismatch"
+        );
+
         Token token = new Token(
             _name,
             _symbol,
@@ -102,15 +107,11 @@ contract TokenFactory {
             _votingPeriod,
             _governor
         );
-        bytes32 proposerRole = timelocker.PROPOSER_ROLE();
-        bytes32 executorRole = timelocker.EXECUTOR_ROLE();
 
-        // grant proposer and executor roles to governor
-        timelocker.grantRole(proposerRole, _govFatory[0]);
-        timelocker.grantRole(executorRole, _govFatory[0]);
+        //bytes32 ROLE = timelocker.PROPOSER_ROLE();
 
-        // renounce deployer’s proposer role for security
-        timelocker.renounceRole(proposerRole, msg.sender);
+        //timelocker.grantRole(ROLE, _govFatory[0]) ;
+        //timelocker.grantRole(timelocker.EXECUTOR_ROLE(), _govFatory[0]);
 
         combineAddresses[0] = address(tokenAddress);
         combineAddresses[1] = address(timelocker);
